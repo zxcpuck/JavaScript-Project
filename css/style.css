@@ -1,0 +1,38 @@
+.user-block {
+    width: 45%;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.user-block a {
+    text-decoration: none;
+    color: #8e7ecd;
+}
+
+.user-block a:hover {
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+}
+
+body {
+    background-image: url("../images/site1(1).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.user-block > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-block > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

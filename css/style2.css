@@ -1,0 +1,68 @@
+#userDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+#userData {
+    margin-top: 10px;
+    background-color: #CCBFD8;
+    border: 3px solid #7e59cd;
+    border-radius: 5px;
+}
+
+body {
+    background-image: url("../images/bgisite2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    width: 90%;
+    border: 1px solid #7e59cd;
+    border-radius: 5px;
+}
+
+#userPosts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#userPosts > div {
+    width: 20%;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #7e59cd;
+    border-radius: 4px;
+}
+
+.postButton{
+    transition: transform 0.35s;
+    font-weight: bold;
+    color: #7e59cd;
+}
+
+.postButton:hover{
+    transform: scale(1.05);
+    transition: transform 0.7s;
+    color: #7e59cd;
+    background-color: #CCBFD8;
+    border-color: white;
+}
+
+.postButton2 {
+    transition: transform 0.35s;
+    font-weight: bold;
+    color: #7e59cd;
+}
+
+.postButton2:hover{
+    transform: scale(1.05);
+    transition: transform 0.7s;
+    color: #7e59cd;
+    background-color: #CCBFD8;
+    border-color: white;
+}

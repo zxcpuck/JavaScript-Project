@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="../css/style2.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <title>JavaScript-Project</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+</head>
+<body>
+<div id="userDetails"></div>
+<div id="userData"></div>
+<button onclick="getUserPost()" class="postButton">Post of current user</button>
+<div id="userPosts"></div>
+
+
+<script>
+    let urlParams = new URLSearchParams(window.location.search);
+    let userId = urlParams.get('userId');
+    let userName = urlParams.get('userName');
+    let userUsername = urlParams.get('userUsername');
+    let userEmail = urlParams.get('userEmail');
+    let userAddressStreet = urlParams.get('userAddressStreet');
+    let userAddressSuite = urlParams.get('userAddressSuite');
+    let userAddressCity = urlParams.get('userAddressCity');
+    let userAddressZipcode = urlParams.get('userAddressZipcode');
+    let userAddressGeoLat = urlParams.get('userAddressGeoLat');
+    let userAddressGeoLng = urlParams.get('userAddressGeoLng');
+    let userPhone = urlParams.get('userPhone');
+    let userWebsite = urlParams.get('userWebsite');
+    let userCompanyName = urlParams.get('userCompanyName');
+    let userCompanyCatchphrase = urlParams.get('userCompanyCatchphrase');
+    let userCompanyBs = urlParams.get('userCompanyBs');
+    let userDetails = document.getElementById('userDetails');
+    userDetails.textContent = `Інформація про користувача під порядковим номером - ${userId} , та ім'ям ${userName}`;
+    let userInfo = document.getElementById('userData');
+    userInfo.innerText = `Нікнейм - ${userUsername}
+    Email - ${userEmail}
+    Address - ${userAddressStreet} , ${userAddressSuite} , ${userAddressCity}
+    Zipcode - ${userAddressZipcode}
+    Geo-lat - ${userAddressGeoLat} , Geo-lng - ${userAddressGeoLng}
+    Phone - ${userPhone}
+    Website - ${userWebsite}
+    Company - ${userCompanyName} , Phrase - ${userCompanyCatchphrase} , BS - ${userCompanyBs}`;
+
+    function getUserPost() {
+        fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+            .then(response => response.json())
+            .then(posts => {
+                let userPosts = document.getElementById('userPosts')
+                userPosts.innerHTML = ''
+
+                posts.forEach(post => {
+                    let postContainer = document.createElement('div')
+                    postContainer.innerHTML = `<h1>${post.title}</h1><p>${post.body}</p>`
+                    userPosts.appendChild(postContainer);
+
+                    let postDetailsButton = document.createElement('button')
+                    postDetailsButton.classList.add('postButton2')
+                    postDetailsButton.innerText = 'show comment information'
+                    postDetailsButton.addEventListener('click', () =>{
+                        window.location.href = `post-details.html?postId=${post.id}&&postTitle=${post.title}&&postBody=${post.body}`;
+                    })
+                    postContainer.appendChild(postDetailsButton)
+                })
+            })
+            .catch(error => {
+                console.error('ERROR', error)
+                alert('Error post plz try later')
+            })
+    }
+</script>
+</body>
+</html>
